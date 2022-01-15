@@ -72,9 +72,9 @@ typedef enum YL800TBreathTime
 typedef struct YL800TReadWriteAllParameters
 {
     /* The speed of serial communication over the UART interface. */
-    YL800TSerialBaudRate serialBaudRate;
+    uint8_t serialBaudRate;
     /* The serial partity check bit option. */
-    YL800TSerialParity serialParity;
+    uint8_t serialParity;
     /*
      * The RF frequency in 1/2^14 MHz units. E.g. 334 MHz is 334*2^14=5472256
      *
@@ -87,15 +87,15 @@ typedef struct YL800TReadWriteAllParameters
      * A higher factor will increase receive sensitivity but decrease transmission speed.
      * Only valid for standard mode.
      */
-    YL800TRFSpreadingFactor rfSpreadingFactor;
-    YL800TMode mode;
+    uint8_t rfSpreadingFactor;
+    uint8_t mode;
     /*
      * The spread spectrum bandwidth. Determines the frequency of signal modulation.
      *
      * A lower value will increase receive sensitivity but decrease transmission speed. A value of 125K is recommended.
      * Only valid for standard mode.
      */
-    YL800TRFBandwidth rfBandwidth;
+    uint8_t rfBandwidth;
     /*
      * The ID or address of a node module.
      *
@@ -135,7 +135,7 @@ typedef struct YL800TReadWriteAllParameters
      *
      * Only valid for central and node mode.
      */
-    YL800TBreathCycle breathCycle;
+    uint8_t breathCycle;
     /*
      * The wake time for star network communication.
      *
@@ -143,7 +143,7 @@ typedef struct YL800TReadWriteAllParameters
      *
      * Only valid for central and node mode.
      */
-    YL800TBreathTime breathTime;
+    uint8_t breathTime;
 } YL800TReadWriteAllParameters;
 
 /*

@@ -28,7 +28,7 @@ int yl800tReceiveReadAllParameters(const uint8_t *message, YL800TReadWriteAllPar
     const uint8_t *parameter = &message[PARAMETER_INDEX];
     parametersOut->serialBaudRate = parameter[0];
     parametersOut->serialParity = parameter[1];
-    parametersOut->rfFrequency = parameter[2] << 16 | parameter[3] << 8 | parameter[4];
+    parametersOut->rfFrequency = (uint32_t)parameter[2] << 16 | (uint32_t)parameter[3] << 8 | parameter[4];
     parametersOut->rfSpreadingFactor = parameter[5];
     parametersOut->mode = parameter[6];
     parametersOut->rfBandwidth = parameter[7];
