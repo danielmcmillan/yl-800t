@@ -4,9 +4,11 @@ Library for building AT commands to set configuration parameters of the YL-800T 
 
 YL-800T is a LoRa radio module with a TTL UART interface.
 
+This device is available from China or from DFRobot. It is simple to use in the standard configuration, but requires specific commands to set parameters for other configurations, which can be difficult since the manufacturer's website and documentation is in Chinese.
+
 ## Configuring module
 
-Commands can be sent via the UART interface to configure parameters of the module. The manufactorer provides Windows software for configuring the module. This library supports building the messages to perform this same configuration and parsing the response. It does not cover serial device communication.
+Commands can be sent via the UART interface to configure parameters of the module. The manufacturer provides Windows software for configuring the module. This library supports building the messages to perform this same configuration and parsing the response. It does not cover serial device communication.
 
 ## Module operation
 
