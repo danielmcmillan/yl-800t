@@ -84,6 +84,7 @@ int yl800tReceiveReadSignalStrength(const uint8_t *message, uint8_t *strengthOut
         return result;
     }
     *strengthOut = message[PARAMETER_INDEX];
+    return result;
 }
 
 uint8_t writeMessage(uint8_t command, uint8_t parameterLength, uint8_t *messageOut)

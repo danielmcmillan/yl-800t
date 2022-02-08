@@ -173,15 +173,15 @@ uint8_t yl800tSendWriteAllParameters(const YL800TReadWriteAllParameters *paramet
 int yl800tReceiveWriteAllParameters(const uint8_t *message);
 
 /*
- * Build message to read the reception field strength for the last packet.
+ * Build message to read the received signal strength for the last packet.
  * The message is written to buffer `messageOut`. `messageOut` must be at least 13 bytes long.
  * Returns the length of the message in bytes.
  */
 uint8_t yl800tSendReadSignalStrength(uint8_t *messageOut);
 
 /*
- * Parse response to request to read the reception field strength for the last packet.
- * The reception strength in dB + 164 is written to strengthOut.
+ * Parse response to request to read the received signal strength for the last packet.
+ * The signal strength in dBm + 164 is written to strengthOut.
  * Returns 0 on success.
  */
 int yl800tReceiveReadSignalStrength(const uint8_t *message, uint8_t *strengthOut);
