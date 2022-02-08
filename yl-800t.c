@@ -2,9 +2,13 @@
 #include "string.h"
 
 #define PARAMETER_INDEX 8
+
 #define COMMAND_WRITE_PARAMETERS 0x01
 #define COMMAND_READ_PARAMETERS 0x02
 #define PARAMETER_LENGTH_READ_WRITE 14
+
+#define COMMAND_READ_SIGNAL_STRENGTH 0x06
+#define PARAMETER_LENGTH_SIGNAL_STRENGTH 2
 
 // Write message except for the parameter. Returns the total message length.
 uint8_t writeMessage(uint8_t command, uint8_t parameterLength, uint8_t *message);
@@ -63,6 +67,23 @@ uint8_t yl800tSendWriteAllParameters(const YL800TReadWriteAllParameters *paramet
 int yl800tReceiveWriteAllParameters(const uint8_t *message)
 {
     return receiveMessage(COMMAND_WRITE_PARAMETERS, PARAMETER_LENGTH_READ_WRITE, message);
+}
+
+uint8_t yl800tSendReadSignalStrength(uint8_t *messageOut)
+{
+    messageOut[PARAMETER_INDEX] = 0;
+    messageOut[PARAMETER_INDEX + 1] = 0;
+    return writeMessage(COMMAND_READ_SIGNAL_STRENGTH, PARAMETER_LENGTH_SIGNAL_STRENGTH, messageOut);
+}
+
+int yl800tReceiveReadSignalStrength(const uint8_t *message, uint8_t *strengthOut)
+{
+    int result = receiveMessage(COMMAND_READ_SIGNAL_STRENGTH, PARAMETER_LENGTH_SIGNAL_STRENGTH, message);
+    if (result != 0)
+    {
+        return result;
+    }
+    *strengthOut = message[PARAMETER_INDEX];
 }
 
 uint8_t writeMessage(uint8_t command, uint8_t parameterLength, uint8_t *messageOut)

@@ -148,7 +148,7 @@ typedef struct YL800TReadWriteAllParameters
 
 /*
  * Build message to request the current value for all parameters.
- * The message is written to buffer `out`. `out` must be at least 25 bytes long.
+ * The message is written to buffer `messageOut`. `messageOut` must be at least 25 bytes long.
  * Returns the length of the message in bytes.
  */
 uint8_t yl800tSendReadAllParameters(uint8_t *messageOut);
@@ -161,7 +161,7 @@ int yl800tReceiveReadAllParameters(const uint8_t *message, YL800TReadWriteAllPar
 
 /*
  * Build message to update all parameter values.
- * The message is written to buffer `out`. `out` must be at least 25 bytes long.
+ * The message is written to buffer `messageOut`. `messageOut` must be at least 25 bytes long.
  * Returns the length of the message in bytes.
  */
 uint8_t yl800tSendWriteAllParameters(const YL800TReadWriteAllParameters *parameters, uint8_t *messageOut);
@@ -171,4 +171,18 @@ uint8_t yl800tSendWriteAllParameters(const YL800TReadWriteAllParameters *paramet
  * Returns 0 on success.
  */
 int yl800tReceiveWriteAllParameters(const uint8_t *message);
+
+/*
+ * Build message to read the reception field strength for the last packet.
+ * The message is written to buffer `messageOut`. `messageOut` must be at least 13 bytes long.
+ * Returns the length of the message in bytes.
+ */
+uint8_t yl800tSendReadSignalStrength(uint8_t *messageOut);
+
+/*
+ * Parse response to request to read the reception field strength for the last packet.
+ * The reception strength in dB + 164 is written to strengthOut.
+ * Returns 0 on success.
+ */
+int yl800tReceiveReadSignalStrength(const uint8_t *message, uint8_t *strengthOut);
 #endif
